@@ -1,0 +1,15 @@
+when you use npm modules, it’s inevitable that some versions would be incompatible.
+
+Webpack itself has been evolving really fast and a lot of loaders and plugins have to keep up. This is a major reason why the configuration files are so different: with a different version combination of the same tools things might work, or break.
+
+Build is created for production code. Dev is created for development, meaning that it supports hot module replacement, dev server, and a lot of things that assist your dev work.
+
+You can override defaults in npm scripts easily, just use flags:
+scripts": {
+  "dev": "webpack --mode development ./src/index.js --output ./dist/main.js" --watch,
+  "build": "webpack --mode production ./src/index.js --output ./dist/main.js --watch"
+  }
+  
+As we will be importing CSS files into our React components, we need css-loader module to resolve them. Once that’s resolved, we also need a style-loader to inject this into our DOM — adding a <style> tag into the <head> element of our HTML.
+
+npm i babel-core babel-loader@7 babel-preset-env babel-preset-react -D
